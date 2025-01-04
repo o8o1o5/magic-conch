@@ -1,27 +1,11 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Main from "./pages/MainPage/Main";
+import "./index.css";
 
-import tasks from "./assets/tasks.json";
-
-function App() {
-  const [task, setTask] = useState("");
-  const [reason, setReason] = useState("");
-
-  const onButtonClick = (e) => {
-    const selectedTask = tasks[Math.floor(Math.random() * tasks.length) + 1];
-    console.log(selectedTask);
-    setTask(selectedTask.task);
-    setReason(selectedTask.reason);
-  };
-
+export default function App() {
   return (
-    <>
-      <div>
-        <button onClick={onButtonClick}>추천받기</button>
-        <div className="task">{task}</div>
-        <div className="reason">{reason}</div>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Main />} />
+    </Routes>
   );
 }
-
-export default App;
